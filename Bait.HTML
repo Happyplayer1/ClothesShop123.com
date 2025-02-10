@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Be My Valentine?</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: pink;
+        }
+        img {
+            width: 300px;
+            height: auto;
+            margin: 20px 0;
+        }
+        .buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            align-items: center;
+        }
+        button {
+            font-size: 16px;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+        #yes {
+            background-color: green;
+            color: white;
+            border-radius: 5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #no {
+            background-color: red;
+            color: white;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Will you be my Valentine?</h1>
+    <img src="https://i.imgur.com/8GPKLJg.jpeg" alt="Valentine Image">
+    <div class="buttons">
+        <button id="yes" onclick="alert('YAY! 💖')">Yes</button>
+        <button id="no" onclick="makeYesBigger()">No</button>
+    </div>
+
+    <script>
+        let yesButton = document.getElementById('yes');
+        let noButton = document.getElementById('no');
+        let noTexts = ["Are you sure?", "Really sure??", "Think again!", "I will be really sad..", "Pleaseeeeee...", "Still no? 😢", "Please reconsider! 💔"];
+        let noIndex = 0;
+        
+        function makeYesBigger() {
+            let currentSize = parseFloat(window.getComputedStyle(yesButton).fontSize);
+            let newSize = currentSize * 1.5 + 'px';
+            yesButton.style.fontSize = newSize;
+            yesButton.style.padding = (currentSize * 0.5) + 'px';
+            yesButton.style.width = (currentSize * 3) + 'px';
+            yesButton.style.height = (currentSize * 2) + 'px';
+            
+            if (noIndex < noTexts.length) {
+                noButton.innerText = noTexts[noIndex];
+                noIndex++;
+            }
+        }
+    </script>
+</body>
+</html>
